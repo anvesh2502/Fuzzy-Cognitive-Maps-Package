@@ -40,7 +40,7 @@ class FCM :
 
     def add_edge(self,concept1,concept2,weight) :
 
-        if weight<=-1.0 or weight >1.0 :           # Error checking for the weight
+        if weight<-1.0 or weight >1.0 :           # Error checking for the weight
 
             print 'Invalid weight value in add_edge'
             return
@@ -91,7 +91,7 @@ class FCM :
             print 'Given concept not found '
             return
 
-        if type(num) is int  :             # If the parameter passed is an int,add it to the attribute
+        if type(num) is int or type(num) is float  :             # If the parameter passed is an int,add it to the attribute
             self._fcm_graph.node[concept]['value']=num
 
         elif type(num) is FunctionType or type(num) is self.FunctionType :
