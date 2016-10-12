@@ -46,15 +46,16 @@ class FCM :
         if weight<-1.0 or weight >1.0 :           # Error checking for the weight
 
             print 'Invalid weight value in add_edge'
-            sys.exit(2)
+            return False
 
         if concept1 not in self._fcm_graph.nodes() :   # If the node doesnt exist,create the node
-            self.add_concept(concept1,value=0)
+            self.add_concept(concept1)
 
         if concept2 not in self._fcm_graph.nodes() :   # If the node doesnt exist,create the node
             self.add_concept(concept2)
 
         self._fcm_graph.add_edge(concept1,concept2,weight=weight) # Adding the edge
+        return True
 
     '''
     This method is an interface for
@@ -67,9 +68,10 @@ class FCM :
 
         if concept not in self._fcm_graph.nodes() :
             print 'Concept not found.Unable to delete'
-            sys.exit(2)
+            return False
 
         self._fcm_graph.remove_node(concept)
+        return True
 
 
     '''
@@ -94,7 +96,7 @@ class FCM :
 
         if concept not in self._fcm_graph.nodes() :   # Error if the given concept does not exist
             print 'Given concept not found '
-            sys.exit(2)
+            return False
 
         if type(num) is int or type(num) is float  :             # If the parameter passed is an int,add it to the attribute
 
@@ -102,7 +104,7 @@ class FCM :
             self._fcm_graph.node[concept]['value']=num
           else :
             print 'Invalid value for a node '
-            sys.exit(2)
+            return False
 
         elif type(num) is FunctionType or type(num) is self.FunctionType :
 
@@ -111,21 +113,17 @@ class FCM :
 
             if len(param_length)!=0 :
                 print "Invalid function type passed "
-                sys.exit(2)
+                return False
 
 
             self._fcm_graph.node[concept]['value']=num()
 
         else :
             print 'Invalid parameter to set_value'
-            sys.exit(2)
+            return False
 
 
-
-
-
-
-
+        return True
 
 
     '''
