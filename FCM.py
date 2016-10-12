@@ -26,7 +26,9 @@ class FCM :
     '''
     def add_concept(self,concept) :
 
-        return self._fcm_graph.add_node(concept)
+      self._fcm_graph.add_node(concept)
+      self._fcm_graph.node[concept]['value']=0.0
+      return
 
     '''
     This method is an interface for the add_edge
@@ -71,13 +73,15 @@ class FCM :
 
     '''
     This method is an interface for
-    nodes().It returns the list of
-    concepts in the graph.
+    nodes().It returns the dictionary of
+    concepts in the graph having the node of the value as value and the concept as the key.
     '''
 
     def concepts(self) :
-
-        return self._fcm_graph.nodes()
+      dictToReturn = {}
+      for node in self._fcm_graph.nodes():
+       dictToReturn[node] = self._fcm_graph.node[node]['value']
+      return dictToReturn
 
     '''
     This method adds an attribute to
@@ -92,7 +96,12 @@ class FCM :
             return
 
         if type(num) is int or type(num) is float  :             # If the parameter passed is an int,add it to the attribute
+
+          if num>=-1.0 and num<=1.0 :
             self._fcm_graph.node[concept]['value']=num
+          else :
+            print 'Invalid value for a node '
+            return
 
         elif type(num) is FunctionType or type(num) is self.FunctionType :
             self._fcm_graph.node[concept]['value']=num()
@@ -118,5 +127,7 @@ class FCM :
     '''
     def draw(self) :
 
+       labels = nx.get_edge_attributes(self._fcm_graph,'value')
+       print labels
        nx.draw(self._fcm_graph,pos=nx.spring_layout(self._fcm_graph),with_labels=True)
        plt.show()
