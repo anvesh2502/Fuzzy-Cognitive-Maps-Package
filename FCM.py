@@ -1,7 +1,8 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 from types import FunctionType
-
+import inspect
+import sys
 
 '''
 This is a Python package for Fuzzy Cognitive Maps
@@ -45,7 +46,7 @@ class FCM :
         if weight<-1.0 or weight >1.0 :           # Error checking for the weight
 
             print 'Invalid weight value in add_edge'
-            return
+            sys.exit(2)
 
         if concept1 not in self._fcm_graph.nodes() :   # If the node doesnt exist,create the node
             self.add_concept(concept1,value=0)
@@ -66,7 +67,7 @@ class FCM :
 
         if concept not in self._fcm_graph.nodes() :
             print 'Concept not found.Unable to delete'
-            return
+            sys.exit(2)
 
         self._fcm_graph.remove_node(concept)
 
@@ -93,7 +94,7 @@ class FCM :
 
         if concept not in self._fcm_graph.nodes() :   # Error if the given concept does not exist
             print 'Given concept not found '
-            return
+            sys.exit(2)
 
         if type(num) is int or type(num) is float  :             # If the parameter passed is an int,add it to the attribute
 
@@ -101,14 +102,23 @@ class FCM :
             self._fcm_graph.node[concept]['value']=num
           else :
             print 'Invalid value for a node '
-            return
+            sys.exit(2)
 
         elif type(num) is FunctionType or type(num) is self.FunctionType :
+
+            param_length=(inspect.getargspec(num)[0])
+
+
+            if len(param_length)!=0 :
+                print "Invalid function type passed "
+                sys.exit(2)
+
+
             self._fcm_graph.node[concept]['value']=num()
 
         else :
             print 'Invalid parameter to set_value'
-            return
+            sys.exit(2)
 
 
 
@@ -127,7 +137,5 @@ class FCM :
     '''
     def draw(self) :
 
-       labels = nx.get_edge_attributes(self._fcm_graph,'value')
-       print labels
        nx.draw(self._fcm_graph,pos=nx.spring_layout(self._fcm_graph),with_labels=True)
        plt.show()
