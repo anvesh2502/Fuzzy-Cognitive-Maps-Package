@@ -36,6 +36,9 @@ else :
     print 'Error adding concepts : Test case failed'
     sys.exit(2)
 
+fcm_graph.remove_edge('concept1','concept2')
+
+
 # Test 3 : Adding edges which did not exist
 
 stat=fcm_graph.add_edge('new concept1','new concept2',0.3)

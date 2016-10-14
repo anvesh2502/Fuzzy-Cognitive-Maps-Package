@@ -58,6 +58,25 @@ class FCM :
         return True
 
     '''
+    This method is an interface for remove_edge
+
+    '''
+
+    def remove_edge(self,node1,node2) :
+
+        if node1 not in self._fcm_graph.nodes() or node2 not in self._fcm_graph.nodes() :
+            print 'nodes do not exist'
+            return False
+
+        self._fcm_graph.remove_edge(node1,node2)
+
+        return True
+
+
+
+
+
+    '''
     This method is an interface for
     the remove_node() .If the node
     does exist,it prints an error
