@@ -106,10 +106,10 @@ class FCM :
         self._fcm_graph.add_edge(concept1,concept2,weight=weight) # Adding the edge
 
     '''
-    This method is an interface for remove_edge
-
+    This method removes edges from the fcm graph.
+    It also checks if the nodes exist and if the edge
+    exists.
     '''
-
     def remove_edge(self,node1,node2) :
 
         if node1 not in self._fcm_graph.nodes()  :
@@ -123,14 +123,7 @@ class FCM :
             nodes=[node1,node2]
             raise EdgeExistError(nodes)
 
-
-
-
         self._fcm_graph.remove_edge(node1,node2)
-
-
-
-
 
 
     '''
