@@ -4,10 +4,58 @@ from types import FunctionType
 import inspect
 import sys
 
+
 '''
 This is a Python package for Fuzzy Cognitive Maps
 
 '''
+
+class FCMConstructionError(Exception) :
+
+    def __init__(self,message,errors) :
+
+      message=message+" : "+str(errors)
+      super(Exception, self).__init__(message)
+
+
+
+class InvalidWeightError(FCMConstructionError) :
+
+    def __init__(self,errors,message="Invalid weight for an edge ") :
+
+        super(InvalidWeightError,self).__init__(message,errors)
+
+class ConceptExistError(FCMConstructionError) :
+
+    def __init__(self,errors,message="Concept does not exist ") :
+
+        super(ConceptExistError,self).__init__(message,errors)
+
+class EdgeExistError(FCMConstructionError) :
+
+    def __init__(self,errors,message="Edge does not exist between ") :
+
+        e=str(errors[0])+" - "+str(errors[1])
+        super(EdgeExistError,self).__init__(message,e)
+
+
+
+class InvalidConceptValueError(FCMConstructionError) :
+
+    def __init__(self,errors,message="Invalid Concept value ") :
+
+        super(InvalidConceptValueError,self).__init__(message,errors)
+
+
+
+
+
+
+
+
+
+
+
 
 class FCM :
 
@@ -45,8 +93,9 @@ class FCM :
 
         if weight<-1.0 or weight >1.0 :           # Error checking for the weight
 
-            print 'Invalid weight value in add_edge'
-            return False
+             raise InvalidWeightError(weight)
+
+
 
         if concept1 not in self._fcm_graph.nodes() :   # If the node doesnt exist,create the node
             self.add_concept(concept1)
@@ -55,7 +104,6 @@ class FCM :
             self.add_concept(concept2)
 
         self._fcm_graph.add_edge(concept1,concept2,weight=weight) # Adding the edge
-        return True
 
     '''
     This method is an interface for remove_edge
@@ -64,13 +112,22 @@ class FCM :
 
     def remove_edge(self,node1,node2) :
 
-        if node1 not in self._fcm_graph.nodes() or node2 not in self._fcm_graph.nodes() :
-            print 'nodes do not exist'
-            return False
+        if node1 not in self._fcm_graph.nodes()  :
+            raise ConceptExistError(node1);
+
+        if  node2 not in self._fcm_graph.nodes() :
+            raise ConceptExistError(node2)
+
+
+        if not self._fcm_graph.has_edge(node1,node2) :
+            nodes=[node1,node2]
+            raise EdgeExistError(nodes)
+
+
+
 
         self._fcm_graph.remove_edge(node1,node2)
 
-        return True
 
 
 
@@ -86,8 +143,10 @@ class FCM :
     def remove_concept(self,concept) :
 
         if concept not in self._fcm_graph.nodes() :
-            print 'Concept not found.Unable to delete'
-            return False
+
+            raise ConceptExistError(concept)
+
+
 
         self._fcm_graph.remove_node(concept)
         return True
@@ -114,16 +173,16 @@ class FCM :
     def set_value(self,concept,num) :
 
         if concept not in self._fcm_graph.nodes() :   # Error if the given concept does not exist
-            print 'Given concept not found '
-            return False
+            raise ConceptExistError(concept)
+
+
 
         if type(num) is int or type(num) is float  :             # If the parameter passed is an int,add it to the attribute
 
           if num>=-1.0 and num<=1.0 :
             self._fcm_graph.node[concept]['value']=num
           else :
-            print 'Invalid value for a node '
-            return False
+            raise InvalidConceptValueError(num)
 
         elif type(num) is FunctionType or type(num) is self.FunctionType :
 
@@ -131,18 +190,15 @@ class FCM :
 
 
             if len(param_length)!=0 :
-                print "Invalid function type passed "
-                return False
-
+                raise InvalidConceptValueError(num)
 
             self._fcm_graph.node[concept]['value']=num()
 
         else :
-            print 'Invalid parameter to set_value'
-            return False
+            raise InvalidConceptValueError(num)
 
 
-        return True
+
 
 
     '''
