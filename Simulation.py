@@ -1,23 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Oct 13 17:33:34 2016
+Created on Mon Oct 31 21:21:39 2016
 
 @author: Eric
 """
-
 from copy import deepcopy
 import numpy as np
 from sys import maxsize
 from networkx import to_numpy_matrix
 from FCM import FCM
-'''
-#Class in the FCM package
-#Parameters: Requires a FCM object from the package as an argument
-#Performs a simulation of the FCM to a determined amount of steps or until stability on concepts chosen by the user
-'''
-class SIMULATION:
-    def __init__(self, fcm):
-        self.fcm = deepcopy(fcm)
+class simulation:
+    def __init__(self, FCM):
+        self.fcm = deepcopy(FCM)
         self.numSteps = maxsize
         #should look for a way to do this without storing both the keys and the dict. More for convenience in checking later and acces
         self.stabilizers = [] 
@@ -27,8 +21,8 @@ class SIMULATION:
         self.stable_concepts = self._stable_concepts() #indexes of concepts that should not be changed by the transfer function
     '''    
     stabilize
-    paramters: concept: A valid concept in the fcm
-               threshold: A threshold that states a diffence of this amount means stable
+    parameters: concept: A valid concept in the fcm
+               threshold: A threshold that states a difference of this amount means stable
     Returns: void
     Description: We check that a valid concept in the fcm has been input and add it to the dictionary of all stabilizers. 
     if the stabilizer is already in the list of stabilizers we just set the new threshold
@@ -59,7 +53,7 @@ class SIMULATION:
             self.numSteps = numsteps
             
         else:
-            print "Please input a positive number of steps that is less than ", maxsize
+            print "Please input a positive number of steps that is less than ", sys.maxsize
             return
     '''
     changeTransferFunction
@@ -78,7 +72,7 @@ class SIMULATION:
             
     '''     
     updateNodes(should only be called by run method)
-    parameters: nodevalues(iterable list): a list in node order that machtes the edge matrix 
+    parameters: nodevalues(iterable list): a list in node order that matches the edge matrix 
                 c(optional double): a weight to modify the values of the nodes
     returns: the updated values of the nodes after one time step
     Description: will convert the list into a numpy array and multiply it with the edge list to get the changes to each node.
@@ -93,16 +87,13 @@ class SIMULATION:
                 print "Weight c needs to be a decimal value"
                 return
             values_vector = values_vector*c
-        #print update, ""
         newValues = np.add(values_vector, update) #values after addition
         newValList = newValues.tolist()[0] #convert to list
         #only apply if hs an incom,ing edge
-        #print 'Value changes are: ',newValList
-        newNodeValueTrans = [self.transferFunction(x) for x in newValList] #appl stransfer function to each value
+        newNodeValueTrans = [self.transferFunction(x) for x in newValList] #applies transfer function to each value
         if self.stable_concepts is not None:
             for index in self.stable_concepts:
                 newNodeValueTrans[index] = nodeValues[index]
-        #print newNodeValueTrans
         return newNodeValueTrans
     '''
     is_stable(should only be called by run function)
@@ -122,18 +113,21 @@ class SIMULATION:
     '''
    Run
    Arguments: c (optional): weight for the nodes to be adjusted by in the time step updates
-   returns: void
+   returns: the dictionary of the new concept values
    Description: Will run the simulation until either time step limit is hit or is stable
    Will print out the number of steps and the nodes with their correlated values
     '''
    
     def run(self, c = None):
         count = 0
+        returnList = []
         oldValues = []
         nodeOrder = self.fcm._fcm_graph.nodes() #edge matrix is in order of nodes 
         for node in nodeOrder:
                 oldValues.append(self.fcm.concepts()[node])
+                
         while count < self.numSteps:
+            returnList.append(self._makeDict(oldValues))
             newValues = self._updateNodes(oldValues,c)
            
             if self._is_Stable(oldValues,newValues):
@@ -142,8 +136,9 @@ class SIMULATION:
             oldValues = newValues
         
             count += 1
-        
+#        newValues = 
         self._output_results(newValues,count)
+        return returnList
 
     '''
     output_result(should only be called by run)
@@ -156,16 +151,12 @@ class SIMULATION:
     3) the final concept values
     '''
     def _output_results(self, conceptValues, steps):
-        outDict = {}
-        index = 0
-         #nodeOrder guaranteed to be the same size as concept values and in the order needed
-        for node in self.fcm._fcm_graph.nodes():
-            outDict[node] = conceptValues[index]
-            index += 1
+        outDict = self._makeDict(conceptValues)            
             
         print "The number of Steps was: ", steps
         print "The Initial concept Values were: \n", self.fcm.concepts()
         print "The final concept Values were: \n", outDict
+        #return outDict
     '''
     stable_concepts(called on init)
     arguments: none
@@ -180,3 +171,21 @@ class SIMULATION:
                 stableList.append(index)
             index += 1
         return stableList
+        
+        
+        '''
+     _makeDict
+     Arguments: values(List): list of concept values in node order
+     returns: A dictionary of concepts with their corresponding values
+     Description: Turns the lists of concept values in node order into a dictionary
+     and returns the dictionary. Only call in methods
+     '''
+    def _makeDict(self, values):
+        outDict = {}
+        index = 0
+         #nodeOrder guaranteed to be the same size as concept values and in the order needed
+        for node in self.fcm._fcm_graph.nodes():
+            outDict[node] = values[index]
+            index += 1
+           
+        return outDict
