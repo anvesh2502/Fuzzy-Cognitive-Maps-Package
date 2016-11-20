@@ -1,0 +1,134 @@
+\hypertarget{class_f_c_m_1_1_f_c_m}{}\section{F\+C\+M.\+F\+CM Class Reference}
+\label{class_f_c_m_1_1_f_c_m}\index{F\+C\+M.\+F\+CM@{F\+C\+M.\+F\+CM}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{class_f_c_m_1_1_f_c_m_aba98e39a31a4bd9cb8eb8887dd98bbc0}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{class_f_c_m_1_1_f_c_m_a57dff35d123327af6d02f335a49c4177}{add\+\_\+concept} (self, concept)
+\item 
+def \hyperlink{class_f_c_m_1_1_f_c_m_a4e32ab9228e8f678e6892092d643062d}{add\+\_\+edge} (self, concept1, concept2, weight)
+\item 
+def \hyperlink{class_f_c_m_1_1_f_c_m_a619a5925ca824a4e633378e2ceeca1fd}{get\+\_\+weight} (self, concept1, concept2)
+\item 
+def \hyperlink{class_f_c_m_1_1_f_c_m_a672188f630f4a42d330f7dc967933054}{remove\+\_\+edge} (self, node1, node2)
+\item 
+def \hyperlink{class_f_c_m_1_1_f_c_m_afcc0b9388e36ebe07b5b3b6c6d877a05}{remove\+\_\+concept} (self, concept)
+\item 
+def \hyperlink{class_f_c_m_1_1_f_c_m_abd95880fc46feca8042343b1556b61f1}{concepts} (self)
+\item 
+def \hyperlink{class_f_c_m_1_1_f_c_m_a55a0daf5c9eecef4639bb15ded281aa5}{set\+\_\+value} (self, concept, num)
+\item 
+def \hyperlink{class_f_c_m_1_1_f_c_m_ae764998f2c68740a4e80de8104da992d}{get\+\_\+concept\+\_\+value} (self, concept)
+\item 
+def \hyperlink{class_f_c_m_1_1_f_c_m_a97f12131aafc3d810da3ff95fb69ae1d}{draw} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}@package docstring
+This is a Python class for Fuzzy Cognitive Maps\end{DoxyVerb}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_f_c_m_1_1_f_c_m_aba98e39a31a4bd9cb8eb8887dd98bbc0}{}\label{class_f_c_m_1_1_f_c_m_aba98e39a31a4bd9cb8eb8887dd98bbc0} 
+\index{F\+C\+M\+::\+F\+CM@{F\+C\+M\+::\+F\+CM}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!F\+C\+M\+::\+F\+CM@{F\+C\+M\+::\+F\+CM}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def F\+C\+M.\+F\+C\+M.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief  This is the constructor for the Fuzzy graph.It initializes the networkx Digraph
+@params none
+\end{DoxyVerb}
+ 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_f_c_m_1_1_f_c_m_a57dff35d123327af6d02f335a49c4177}{}\label{class_f_c_m_1_1_f_c_m_a57dff35d123327af6d02f335a49c4177} 
+\index{F\+C\+M\+::\+F\+CM@{F\+C\+M\+::\+F\+CM}!add\+\_\+concept@{add\+\_\+concept}}
+\index{add\+\_\+concept@{add\+\_\+concept}!F\+C\+M\+::\+F\+CM@{F\+C\+M\+::\+F\+CM}}
+\subsubsection{\texorpdfstring{add\+\_\+concept()}{add\_concept()}}
+{\footnotesize\ttfamily def F\+C\+M.\+F\+C\+M.\+add\+\_\+concept (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{concept }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief This method is an interface for the add_node method of DiGraph
+@param concept A valid concept\end{DoxyVerb}
+ \hypertarget{class_f_c_m_1_1_f_c_m_a4e32ab9228e8f678e6892092d643062d}{}\label{class_f_c_m_1_1_f_c_m_a4e32ab9228e8f678e6892092d643062d} 
+\index{F\+C\+M\+::\+F\+CM@{F\+C\+M\+::\+F\+CM}!add\+\_\+edge@{add\+\_\+edge}}
+\index{add\+\_\+edge@{add\+\_\+edge}!F\+C\+M\+::\+F\+CM@{F\+C\+M\+::\+F\+CM}}
+\subsubsection{\texorpdfstring{add\+\_\+edge()}{add\_edge()}}
+{\footnotesize\ttfamily def F\+C\+M.\+F\+C\+M.\+add\+\_\+edge (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{concept1,  }\item[{}]{concept2,  }\item[{}]{weight }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief This method is an interface for the add_edge method of Digraph.It checks whether the weight provided is the range of [-1,1].If the node does not exist,we create them before creating the edge.
+@param concept1 a valid concept
+@param concept2 a valid concept
+@param weight a desired weight for the edge
+\end{DoxyVerb}
+ \hypertarget{class_f_c_m_1_1_f_c_m_abd95880fc46feca8042343b1556b61f1}{}\label{class_f_c_m_1_1_f_c_m_abd95880fc46feca8042343b1556b61f1} 
+\index{F\+C\+M\+::\+F\+CM@{F\+C\+M\+::\+F\+CM}!concepts@{concepts}}
+\index{concepts@{concepts}!F\+C\+M\+::\+F\+CM@{F\+C\+M\+::\+F\+CM}}
+\subsubsection{\texorpdfstring{concepts()}{concepts()}}
+{\footnotesize\ttfamily def F\+C\+M.\+F\+C\+M.\+concepts (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief This method is an interface for nodes().It returns the dictionary of concepts in the graph having the node of the value as value and the concept as the key.
+@param none
+\end{DoxyVerb}
+ \hypertarget{class_f_c_m_1_1_f_c_m_a97f12131aafc3d810da3ff95fb69ae1d}{}\label{class_f_c_m_1_1_f_c_m_a97f12131aafc3d810da3ff95fb69ae1d} 
+\index{F\+C\+M\+::\+F\+CM@{F\+C\+M\+::\+F\+CM}!draw@{draw}}
+\index{draw@{draw}!F\+C\+M\+::\+F\+CM@{F\+C\+M\+::\+F\+CM}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily def F\+C\+M.\+F\+C\+M.\+draw (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb} @brief    This method is an interface for the draw() in the networkx package.We draw the DiGraph using spring layout and labels with the help of matplotlib
+ @param none
+\end{DoxyVerb}
+ \hypertarget{class_f_c_m_1_1_f_c_m_ae764998f2c68740a4e80de8104da992d}{}\label{class_f_c_m_1_1_f_c_m_ae764998f2c68740a4e80de8104da992d} 
+\index{F\+C\+M\+::\+F\+CM@{F\+C\+M\+::\+F\+CM}!get\+\_\+concept\+\_\+value@{get\+\_\+concept\+\_\+value}}
+\index{get\+\_\+concept\+\_\+value@{get\+\_\+concept\+\_\+value}!F\+C\+M\+::\+F\+CM@{F\+C\+M\+::\+F\+CM}}
+\subsubsection{\texorpdfstring{get\+\_\+concept\+\_\+value()}{get\_concept\_value()}}
+{\footnotesize\ttfamily def F\+C\+M.\+F\+C\+M.\+get\+\_\+concept\+\_\+value (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{concept }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief returns the value of the concept
+@param concept a valid concept
+\end{DoxyVerb}
+ \hypertarget{class_f_c_m_1_1_f_c_m_a619a5925ca824a4e633378e2ceeca1fd}{}\label{class_f_c_m_1_1_f_c_m_a619a5925ca824a4e633378e2ceeca1fd} 
+\index{F\+C\+M\+::\+F\+CM@{F\+C\+M\+::\+F\+CM}!get\+\_\+weight@{get\+\_\+weight}}
+\index{get\+\_\+weight@{get\+\_\+weight}!F\+C\+M\+::\+F\+CM@{F\+C\+M\+::\+F\+CM}}
+\subsubsection{\texorpdfstring{get\+\_\+weight()}{get\_weight()}}
+{\footnotesize\ttfamily def F\+C\+M.\+F\+C\+M.\+get\+\_\+weight (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{concept1,  }\item[{}]{concept2 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief returns the weight of the edge,if the edge exists
+@param concept1 a valid concept
+@param concept2 a valid concept
+\end{DoxyVerb}
+ \hypertarget{class_f_c_m_1_1_f_c_m_afcc0b9388e36ebe07b5b3b6c6d877a05}{}\label{class_f_c_m_1_1_f_c_m_afcc0b9388e36ebe07b5b3b6c6d877a05} 
+\index{F\+C\+M\+::\+F\+CM@{F\+C\+M\+::\+F\+CM}!remove\+\_\+concept@{remove\+\_\+concept}}
+\index{remove\+\_\+concept@{remove\+\_\+concept}!F\+C\+M\+::\+F\+CM@{F\+C\+M\+::\+F\+CM}}
+\subsubsection{\texorpdfstring{remove\+\_\+concept()}{remove\_concept()}}
+{\footnotesize\ttfamily def F\+C\+M.\+F\+C\+M.\+remove\+\_\+concept (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{concept }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief This method is an interface for the remove_node() .If the node does exist,it prints an error message and returns.
+@param concept A valid concept\end{DoxyVerb}
+ \hypertarget{class_f_c_m_1_1_f_c_m_a672188f630f4a42d330f7dc967933054}{}\label{class_f_c_m_1_1_f_c_m_a672188f630f4a42d330f7dc967933054} 
+\index{F\+C\+M\+::\+F\+CM@{F\+C\+M\+::\+F\+CM}!remove\+\_\+edge@{remove\+\_\+edge}}
+\index{remove\+\_\+edge@{remove\+\_\+edge}!F\+C\+M\+::\+F\+CM@{F\+C\+M\+::\+F\+CM}}
+\subsubsection{\texorpdfstring{remove\+\_\+edge()}{remove\_edge()}}
+{\footnotesize\ttfamily def F\+C\+M.\+F\+C\+M.\+remove\+\_\+edge (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{node1,  }\item[{}]{node2 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief This method removes edges from the fcm graph.It also checks if the nodes exist and if the edge exists.
+@param node1 a valid concept
+@param node2 a valid concept
+\end{DoxyVerb}
+ \hypertarget{class_f_c_m_1_1_f_c_m_a55a0daf5c9eecef4639bb15ded281aa5}{}\label{class_f_c_m_1_1_f_c_m_a55a0daf5c9eecef4639bb15ded281aa5} 
+\index{F\+C\+M\+::\+F\+CM@{F\+C\+M\+::\+F\+CM}!set\+\_\+value@{set\+\_\+value}}
+\index{set\+\_\+value@{set\+\_\+value}!F\+C\+M\+::\+F\+CM@{F\+C\+M\+::\+F\+CM}}
+\subsubsection{\texorpdfstring{set\+\_\+value()}{set\_value()}}
+{\footnotesize\ttfamily def F\+C\+M.\+F\+C\+M.\+set\+\_\+value (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{concept,  }\item[{}]{num }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief This method adds an attribute to a node and accepts either an integer of a function which returns an integer
+@param concept A valid concept
+@param num a valid integer between [-1,1 ]
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+C\+M.\+py\end{DoxyCompactItemize}
