@@ -22,7 +22,7 @@ class simulation:
     '''
 
 
-    def __init__(self, FCM,converge_concepts_dict):
+    def __init__(self, FCM,converge_concepts_dict=None):
         '''
         Constructor
         The constructor takes the following parameters
@@ -37,6 +37,7 @@ class simulation:
         #should look for a way to do this without storing both the keys and the dict. More for convenience in checking later and acces
         self.stabilizers = []
         self.stableDict = {}
+        self.converge_concepts_dict=converge_concepts_dict
         self.particle_swarm=PSO(FCM,converge_concepts_dict)
         self.transferFunction = np.tanh
         self.edgeMatrix = to_numpy_matrix(self.fcm._fcm_graph).transpose() #influence to a node in stored in the row
@@ -159,7 +160,7 @@ class simulation:
         end_time=0.0
 
 
-        if run_particle_swarm :
+        if run_particle_swarm and self.converge_concepts_dict!=None:
             start_time=time.time()
             self.particle_swarm.run_convergence()
             end_time=time.time()

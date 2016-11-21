@@ -38,7 +38,8 @@ class PSO :
 
 
         self.fcm=fcm
-        self.converge_concepts=converge_concepts_dict.keys()
+        if converge_concepts_dict!=None :
+         self.converge_concepts=converge_concepts_dict.keys()
         self.converge_concepts_dict=converge_concepts_dict
         self.steepness_parameter=steepness_parameter
         self.weight_matrix=dict()

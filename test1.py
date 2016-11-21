@@ -5,7 +5,7 @@ Created on Thu Oct 13 17:33:18 2016
 @author: Eric
 """
 from FCM import FCM
-from FCM import SIMULATION
+from Simulation import *
 import math
 
 def transFunct(x):
@@ -49,7 +49,7 @@ test_fcm.add_edge("Therm_tank2","Valve2",.3)
 
 test_fcm.draw()
 
-sim_test = SIMULATION(test_fcm)
+sim_test = simulation(test_fcm,{'Tank1':(0.4,0.7),'Valve1' : (0.6,0.9)})
 
 sim_test.steps(10)
 
@@ -58,4 +58,4 @@ sim_test.stabilize("Tank2", .001)
 
 sim_test.changeTransferFunction(transFunct)
 
-sim_test.run(.1)
+sim_test.run(True,.1)
