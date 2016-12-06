@@ -1,1 +1,1 @@
-"# Fuzzy-Cognitive-Maps-Package" 
+This package is a library for Fuzzy Cognitive Maps and its simulation and learning with Hebbian Learning and Particle Swarm Optimization.

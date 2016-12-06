@@ -90,10 +90,167 @@ $(function() {
 <td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="class_f_c_m_1_1_invalid_value_error.html" target="_self">InvalidValueError</a></td>
 </tr>
 
+<tr id="row_4_" class="even"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_0_" class="arrow" onclick="toggleFolder('0_')">&#9660;</span><span class="icona"><span class="icon">N</span></span><b>Hebbian</b></td><td class="desc"></td></tr>
+
+<tr>
+<td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="#hebbian_learning" target="_self">hebbian_learning</a></td>
+</tr>
+
+<tr>
+<td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="#updateEdge" target="_self">updateEdge</a></td>
+</tr>
+
+
+<tr>
+<td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="#stable_concepts" target="_self">stable_concepts</a></td>
+</tr>
+
+<tr>
+<td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="#updateConcepts" target="_self">updateConcepts</a></td>
+</tr>
+
+
+
+
 
 </table>
 </div><!-- directory -->
 </div><!-- contents -->
+
+<h2 class="memtitle"><span class="permalink">&sect;&nbsp;</a></span>hebbian_learning()</h2>
+
+<div class="memitem" id="hebbian_learnning">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def  hebbian_learning(fcm, restraints, stabilizers, transferFunct, neu, k = maxsize)</td>
+        </tr>
+      </table>
+</div>
+<br>
+<b>Parameters </b> :<ul>
+<li>fcm - An object of the FCM</li>
+<li>restraints - dictionary that contains the range of the desired output of concepts</li>
+<li>stabilizers - concepts to stabilize on and their stabilization threshold</li>
+<li>transferFunct - a function to keep values in desired range</li>
+<li>neu - a float in range [0,1] that is the learning coefficient</li>
+<li>k - default is max system size, how many steps the system should use to learn</li>
+</ul> 
+ <br>
+ <b>Returns </b> : The new edge matrix for the FCM <br>
+ <b> Return Type </b> : A list of lists <br>
+ <b> Exceptions which can be raised by this method </b> : None <br>
+<div class="memdoc">
+<pre class="fragment">
+This method will take an FCM and using the <a href="http://biomine.ece.ualberta.ca/papers/WCCI2008.pdf">Nonlinear Hebbian Learning method</a> to get optimal edge values for an FCM starting from an initial state.
+</pre></div>
+
+
+</pre> 
+</div>
+</div>
+
+
+
+
+<h2 class="memtitle"><span class="permalink">&sect;&nbsp;</a></span>updateConcepts()</h2>
+
+<div class="memitem" id="updateConcepts">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def updateConcepts(edgeMatrix, nodeValues, transferFunction, stableList)</td>
+        </tr>
+      </table>
+</div>
+<br>
+<b>Parameters </b> :<ul>
+<li>edgeMatrix - A new matrix of edges</li>
+<li>nodeValues - a list in node order that matches the edge matrix</li>
+<li>transferFunction - a function to keep values in range[-1,1]</li>
+<li>stableList - list of the concepts with no incoming edges</li>
+</ul> 
+ <br>
+ <b>Returns </b> : the updated values of the nodes after one time step <br>
+ <b> Return Type </b> : A list of lists <br>
+ <b> Exceptions which can be raised by this method </b> : None <br>
+<div class="memdoc">
+<pre class="fragment">
+This method will convert the list into a numpy array and multiply it with the edge list to get the changes to each node.the changes will be applied to all nodes to the transfer function. If a node has no incoming edges it is declared stable and returned to its old value.
+
+</pre></div>
+
+</pre> 
+</div>
+</div>
+
+
+
+
+<h2 class="memtitle"><span class="permalink">&sect;&nbsp;</a></span>stable_concepts()</h2>
+
+<div class="memitem" id="stable_concepts">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def stable_concepts(fcm)</td>
+        </tr>
+      </table>
+</div>
+<br>
+<b>Parameters </b> :<ul>
+<li>fcm - A valid fcm object</li>
+</ul> 
+ <br>
+ <b>Returns </b> : None <br>
+ <b> Return Type </b> : None <br>
+ <b> Exceptions which can be raised by this method </b> : None <br>
+<div class="memdoc">
+<pre class="fragment">
+This method checks which nodes have no incoming edges and marks them as to remain stable throughout the simulation
+</pre></div>
+
+</pre> 
+</div>
+</div>
+
+<h2 class="memtitle"><span class="permalink">&sect;&nbsp;</a></span>updateEdge()</h2>
+
+<div class="memitem" id="updateEdge">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def updateEdge(edge,j,targetList,neu)</td>
+        </tr>
+      </table>
+</div>
+<br>
+<b>Parameters </b> :<ul>
+<li>edge - row of the edge matrix to be updated</li>
+<li>j - Value of the source concept</li>
+<li>transferFunction - a function to keep values in range[-1,1]</li>
+<li>stableList - list of the concepts with no incoming edges</li>
+<li>neu(double [0,1]): the learning coefficient</li>
+</ul> 
+ <br>
+ <b>Returns </b> : The vector of updated edge values <br>
+ <b> Return Type </b> : A list  <br>
+ <b> Exceptions which can be raised by this method </b> : None <br>
+<div class="memdoc">
+<pre class="fragment">This method uses the nonlinear hebbian algorithm for updating edge values and returns the new edge values for that row.
+</pre></div>
+
+</pre> 
+</div>
+</div>
+
+
+
+
+
+
+
+
 
 </body>
 </html>

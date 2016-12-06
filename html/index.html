@@ -53,7 +53,7 @@ $(function() {
      onkeydown="return searchBox.OnSearchSelectKey(event)">
 </div>
 
-<!-- iframe showing the search results (closed by default) -->
+<!-- iframe showing the search result[s (closed by default) -->
 <div id="MSearchResultsWindow">
 <iframe src="javascript:void(0)" frameborder="0" 
         name="MSearchResults" id="MSearchResults">
@@ -84,8 +84,16 @@ This package is written in Python and provides  &nbsp&nbsp&nbsp&nbspvarious oper
 <center><h2><a href="#simulation"> Simulation of the FCM </a></h2></l1></center>
 <center><h2><a href="#hebbian"> Hebbian Learning in FCM</a></h2></l1></center>
 <center><h2><a href="#pso">Particle Swarm Optimization in FCM </a></h2></l1></center>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 </ul>
+
+<h1>Creation of fcm</h1>
 <div id="creation" tooltip="Creating an FCM">
 <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888"># FCM Creation</span>
 <span style="color: #888888"># We are going to create an FCM object in this section by calling the constructor of the FCM class which is in the FCM.py file</span>
@@ -96,6 +104,8 @@ fcm<span style="color: #333333">=</span><a href="./class_f_c_m_1_1_f_c_m.html#ab
 </div>
 <br>
 <br>
+
+<h2>Adding concepts to fcm</h2>
 <div id="add_concept" tooltip="Adding a concept to the FCM">
 <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888"># Adding concepts to FCM</span>
 <span style="color: #888888"># In this section,we are going to add concepts to an existing valid FCM object</span>
@@ -106,6 +116,7 @@ fcm<span style="color: #333333">.</span>add_concept(<span style="background-colo
 </div>
 <br>
 <br>
+<h2>Adding edges to fcm</h2>
 <div id="add_edge" class="box">
 <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888"># Adding an edge between two concepts in an FCM</span>
 
@@ -125,6 +136,7 @@ weight<span style="color: #333333">=</span><span style="color: #6600EE; font-wei
 </div>
 <br>
 <br>
+<h2>Setting a value to a concept in fcm</h2>
 <div id="set_value" class="box">
 <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888"># Setting the value of a concept in different ways</span>
 
@@ -147,6 +159,7 @@ ceptValueError </a>:
 </div>
 <br>
 <br>
+<h2>Simulation of fcm</h2>
 <div id="simulation" class="box">
 
 <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888"># Simulation of the FCM</span>
@@ -211,6 +224,7 @@ my_simulator<span style="color: #333333">.</span><a href="./class_simulation_1_1
 </div> 
 <br>
 <br>
+<h2>Hebbian Learning in FCM</h2>
 <div id="hebbian" class="box">
   <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888"># Hebbian Learning in FCM</span>
 <span style="color: #888888"># In this section,we demonstrate the <a href="http://biomine.ece.ualberta.ca/papers/WCCI2008.pdf">Hebbian Learning </a>in the FCM </span>
@@ -231,6 +245,7 @@ new_edge_matrix<span style="color: #333333">=</span>hebbian(test_fcm,concept_bou
 </div>
 <br>
 <br>
+<h2>Particle Swarm Optimization in FCM</h2>
 <div id="pso" class="box">
 
 <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888"># Particle Swarm Optimization in FCM</span>

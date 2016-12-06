@@ -101,6 +101,9 @@ well as the Particle Swarm Optimization with the help of an optional parameter</
   converge_concepts_dict)</td>
         </tr>
       </table>
+
+
+</div><div class="memdoc">
       <b>Parameters </b> : 
       <ul>
       <li>fcm(<a href="./class_f_c_m_1_1_f_c_m.html">FCM</a>) - an FCM object</li>
@@ -111,8 +114,6 @@ well as the Particle Swarm Optimization with the help of an optional parameter</
  <b> Return Type </b> : Simulation <br>
  <b> Exceptions which can be raised by this method </b> : None <br>
 
-
-</div><div class="memdoc">
 <pre class="fragment">Constructor
 The constructor takes the following parameters
 1) FCM object
@@ -132,10 +133,25 @@ The constructor takes the following parameters
         </tr>
       </table>
 </div><div class="memdoc">
+      <b>Parameters </b> : 
+      <ul>
+      <li>function(<a href="https://docs.python.org/2/library/types.html">FunctionType</a>) - A function object</li>
+      </ul>
+       <br>
+ <b>Returns </b> : None <br>
+ <b> Return Type </b> : None <br>
+ <b> Exceptions which can be raised by this method </b> : <a href="./class_f_c_m_1_1_invalid_value_error.html">InvalidValueError</a>&nbsp&nbsp<a href="./class_f_c_m_1_1_input_type_error.html">InputTypeError</a><br>
+
 <pre class="fragment">changeTransferFunction
-Parameters: function (function with 1 argument): a function that takes one argument and maintains values in range [-1,1]
-return: void
-Description: Changes the transfer function. error check will pass 100 and -100  to see if they stay in range
+This method changes the transfer function.The error check will pass 100 and -100  to see if they stay in range.Below is the proper usage of this function<br>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">try</span> :
+  changeTransferFunction(f)
+<span style="color: #008800; font-weight: bold">except</span> InvalidValueError :
+  <span style="color: #008800; font-weight: bold">print</span> <span style="background-color: #fff0f0">&#39;You will see this code if the value is invalid&#39;</span>
+<span style="color: #008800; font-weight: bold">except</span> InputTypeError :
+  <span style="color: #008800; font-weight: bold">print</span> <span style="background-color: #fff0f0">&#39;You will see this code if have not passed a function&#39;</span>
+</pre></div>
+
 </pre> 
 </div>
 </div>
@@ -150,11 +166,19 @@ Description: Changes the transfer function. error check will pass 100 and -100  
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">Run
-Arguments: c (optional): weight for the nodes to be adjusted by in the time step updates
-returns: the dictionary of the new concept values
-Description: Will run the simulation until either time step limit is hit or is stable
-Will print out the number of steps and the nodes with their correlated values
+      <b>Parameters </b> : 
+      <ul>
+      <li>run_particle_swarm(<a href="https://docs.python.org/2/library/stdtypes.html">boolean</a>) - A default parameter,if true,runs the PSO algorithm</li>
+      <li>c(<a href="https://docs.python.org/3/tutorial/datastructures.html">list</a>) - a list of weight for the nodes to be adjusted by in the time step updates</li>
+      </ul>
+       <br>
+ <b>Returns </b> : Returns a dictionary of the updated concepts and values <br>
+ <b> Return Type </b> : Dictionary<br>
+ <b> Exceptions which can be raised by this method </b> : None <br>
+
+<pre class="fragment">
+This method runs the default simulation or the PSO according to the arguments.This method has 
+two termination conditions- It will terminate either if the concepts are stable,or if the time limit has reached.
 </pre> 
 </div>
 </div>
@@ -168,13 +192,19 @@ Will print out the number of steps and the nodes with their correlated values
           <td class="memname">def Simulation.simulation.stabilize(concept,threshold)
         </tr>
       </table>
+
 </div><div class="memdoc">
-<pre class="fragment">stabilize
-parameters: concept: A valid concept in the fcm
-threshold: A threshold that states a difference of this amount means stable
-Returns: void
-Description: We check that a valid concept in the fcm has been input and add it to the dictionary of all stabilizers.
-if the stabilizer is already in the list of stabilizers we just set the new threshold
+  <b>Parameters </b> : 
+      <ul>
+      <li>concept(<a href="">string</a>) - A valid concept in the fcm</li>
+      <li>threshold - A threshold that states a difference of this amount means stable</li>
+      </ul>
+       <br>
+ <b>Returns </b> : None <br>
+ <b> Return Type </b> : None<br>
+ <b> Exceptions which can be raised by this method </b> : None <br>
+<pre class="fragment">
+In this function,we check that a valid concept in the fcm has been input and add it to the dictionary of all stabilizers.If the stabilizer is already in the list of stabilizers we just set the new threshold.
 </pre> 
 </div>
 </div>
@@ -188,8 +218,18 @@ if the stabilizer is already in the list of stabilizers we just set the new thre
           <td class="memname">def Simulation.simulation.steps(numsteps)
         </tr>
       </table>
+
 </div><div class="memdoc">
-<pre class="fragment">A function which takes input as a number of steps
+ <b>Parameters </b> : 
+      <ul>
+      <li>numsteps - The number of steps which need to be run</li>
+      </ul>
+       <br>
+ <b>Returns </b> : None <br>
+ <b> Return Type </b> : None<br>
+ <b> Exceptions which can be raised by this method </b> : None <br>
+<pre class="fragment">
+ This method is used to assign the number of steps the simulation must run. 
 </pre> 
 </div>
 </div>
