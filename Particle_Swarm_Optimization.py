@@ -51,7 +51,7 @@ class PSO :
         self.velocity_list=[]
         self.best_weights=[]
 
-    def sigmoid(self,x) :
+    def _sigmoid(self,x) :
         '''
         @brief The formula is  f(x)=(1)(1+exp(-x))
         @param x - a valid integer
@@ -61,7 +61,7 @@ class PSO :
         return (exponent_x)/(1+exponent_x)
 
 
-    def heaviside(self,x) :
+    def _heaviside(self,x) :
            '''
            @brief  This function is used to determine the objective function which acts as a global minimizer which returns either 0 or 1
            @param  x  a valid integer
@@ -71,7 +71,7 @@ class PSO :
            return 1
 
 
-    def initialize_weight_matrix(self) :
+    def _initialize_weight_matrix(self) :
         '''
         @brief : This function is used to create a dictionary of dictionary of the weights of the concept edges
         @param : This function takes no parameters other than the self parameter
@@ -96,7 +96,7 @@ class PSO :
         self.best_weights=[0.0]*len(self.weight_matrix)
 
 
-    def get_updated_concept_values(self,concept) :
+    def _get_updated_concept_values(self,concept) :
 
         '''
         @brief This function updates the concept values according to the changed weights
@@ -118,14 +118,14 @@ class PSO :
                     value=self.fcm.get_concept_value(node)
                     current_expression+=weight*value
 
-            result=self.sigmoid(current_expression)
+            result=self._sigmoid(current_expression)
             concept_vector.append(result)
             i+=1
 
         return concept_vector
 
 
-    def get_fitness(self, weight):
+    def _get_fitness(self, weight):
 
       '''
       @brief : It is an implementation of the schaffer F6 function which is used to calculate the fitness of the weights
@@ -133,15 +133,15 @@ class PSO :
 
       '''
       if len(weight) <= 2:
-		return self.schafferF6HelperFunction(0, weight)
+		return self._schafferF6HelperFunction(0, weight)
       else:
 		total = 0
 		for i in xrange(len(weight)):
-			total += weight[i] * self.schafferF6HelperFunction(i, weight)
+			total += weight[i] * self._schafferF6HelperFunction(i, weight)
 		return total
 
 
-    def schafferF6HelperFunction(self, index, weight):
+    def _schafferF6HelperFunction(self, index, weight):
         '''
 
         @brief  This function is a pairwise schaffer F6 calculator which is used by the above function
@@ -157,7 +157,7 @@ class PSO :
         xsqrdysqrd = x**2 + y**2
         return 0.5 + (sin(sqrt(xsqrdysqrd))-0.5) / (1+0.001*xsqrdysqrd)**2
 
-    def get_swarm_weights(self) :
+    def _get_swarm_weights(self) :
 
         '''
         @brief   This function is used to get the swarm weights by finding the
@@ -168,7 +168,7 @@ class PSO :
 
 
         gbest=self.weight_matrix[self.converge_concepts[0]].values()
-        g_fitness=self.get_fitness(gbest)
+        g_fitness=self._get_fitness(gbest)
         iterations=0
 
 
@@ -177,7 +177,7 @@ class PSO :
             for i in range(0,len(self.converge_concepts)) :
 
                 current=self.weight_matrix[self.converge_concepts[i]].values()
-                fitness=self.get_fitness(current)
+                fitness=self._get_fitness(current)
 
                 if fitness>self.fitness_list[i] :
                     self.fitness_list[i]=fitness
@@ -211,7 +211,7 @@ class PSO :
             iterations+=1
 
 
-    def in_bounds(self,value,bounds) :
+    def _in_bounds(self,value,bounds) :
 
         '''
         @brief : This method is a utility function which is used to tell if the value lies between the bounds
@@ -228,7 +228,7 @@ class PSO :
         return False
 
 
-    def check_concept_bounds(self) :
+    def _check_concept_bounds(self) :
         '''
         @brief: This method checks if the concepts are asked to be converged are within the given bounds or not.This function is the
                     termination function for the algorithm
@@ -238,7 +238,7 @@ class PSO :
 
         for concept in self.converge_concepts_dict :
             bounds=self.converge_concepts_dict[concept]
-            if not self.in_bounds(self.fcm.get_concept_value(concept),bounds) :
+            if not self._in_bounds(self.fcm.get_concept_value(concept),bounds) :
                 return False
 
         return True
@@ -263,20 +263,20 @@ class PSO :
 
 
 
-        self.initialize_weight_matrix()
+        self._initialize_weight_matrix()
 
         objective_function=0
 
-        while not self.check_concept_bounds() :
+        while not self._check_concept_bounds() :
 
          objective_function=0
-         self.get_swarm_weights()
+         self._get_swarm_weights()
 
 
          for concept in self.converge_concepts :
             bounds=self.converge_concepts_dict[concept]
-            concept_value=self.fcm.get_concept_value(concept)
-            if self.in_bounds(concept_value,bounds) :
+            concept_value=self.fcm._get_concept_value(concept)
+            if self._in_bounds(concept_value,bounds) :
                 continue
 
             function_value=concept_value
@@ -288,10 +288,10 @@ class PSO :
                     continue
                 function_value+=w*v
 
-            concept_value=self.sigmoid(function_value)
+            concept_value=self._sigmoid(function_value)
             self.fcm.set_value(concept,concept_value)
 
-            objective_function+=self.heaviside(bounds[0]-concept_value)*abs(bounds[0]-concept_value)+(self.heaviside(concept_value-bounds[1])*abs(concept_value-bounds[1]))
+            objective_function+=self._heaviside(bounds[0]-concept_value)*abs(bounds[0]-concept_value)+(self._heaviside(concept_value-bounds[1])*abs(concept_value-bounds[1]))
 
 
 

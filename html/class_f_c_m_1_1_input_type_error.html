@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.12"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Fuzzy Cognitive Maps: FCM.FCMConstructionError Class Reference</title>
+<title>Fuzzy Cognitive Maps: FCM.ConceptExistError Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -58,38 +58,40 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>FCM</b></li><li class="navelem"><a class="el" href="class_f_c_m_1_1_f_c_m_construction_error.html">FCMConstructionError</a></li>  </ul>
+<li class="navelem"><b>FCM</b></li><li class="navelem"><a class="el" href="class_f_c_m_1_1_concept_exist_error.html">ConceptExistError</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="class_f_c_m_1_1_f_c_m_construction_error-members.html">List of all members</a>  </div>
+<a href="class_f_c_m_1_1_concept_exist_error-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">FCM.FCMConstructionError Class Reference</div>  </div>
+<div class="title">FCM.ConceptExistError Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="dynheader">
-Inheritance diagram for FCM.FCMConstructionError:</div>
+Inheritance diagram for FCM.ConceptExistError:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="class_f_c_m_1_1_f_c_m_construction_error.png" usemap="#FCM.FCMConstructionError_map" alt=""/>
-  <map id="FCM.FCMConstructionError_map" name="FCM.FCMConstructionError_map">
-<area href="class_f_c_m_1_1_concept_exist_error.html" alt="FCM.ConceptExistError" shape="rect" coords="0,112,191,136"/>
-<area href="class_f_c_m_1_1_edge_exist_error.html" alt="FCM.EdgeExistError" shape="rect" coords="201,112,392,136"/>
-<area href="class_f_c_m_1_1_invalid_concept_value_error.html" alt="FCM.InvalidConceptValueError" shape="rect" coords="402,112,593,136"/>
-<area href="class_f_c_m_1_1_invalid_weight_error.html" alt="FCM.InvalidWeightError" shape="rect" coords="603,112,794,136"/>
+  <img src="class_f_c_m_1_1_concept_exist_error.png" usemap="#FCM.ConceptExistError_map" alt=""/>
+  <map id="FCM.ConceptExistError_map" name="FCM.ConceptExistError_map">
+<area href="class_f_c_m_1_1_f_c_m_construction_error.html" alt="FCM.FCMConstructionError" shape="rect" coords="0,56,173,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a843bdbfe3b6d66d7b84b86bc1990c691"><td class="memItemLeft" align="right" valign="top"><a id="a843bdbfe3b6d66d7b84b86bc1990c691"></a>
+<tr class="memitem:ae367be09252d2594b59a659afac8a6da"><td class="memItemLeft" align="right" valign="top"><a id="ae367be09252d2594b59a659afac8a6da"></a>
+def&#160;</td><td class="memItemRight" valign="bottom"><b>__init__</b> (self, errors, message=&quot;Concept does not exist &quot;)</td></tr>
+<tr class="separator:ae367be09252d2594b59a659afac8a6da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_f_c_m_1_1_f_c_m_construction_error"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_f_c_m_1_1_f_c_m_construction_error')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_f_c_m_1_1_f_c_m_construction_error.html">FCM.FCMConstructionError</a></td></tr>
+<tr class="memitem:a843bdbfe3b6d66d7b84b86bc1990c691 inherit pub_methods_class_f_c_m_1_1_f_c_m_construction_error"><td class="memItemLeft" align="right" valign="top"><a id="a843bdbfe3b6d66d7b84b86bc1990c691"></a>
 def&#160;</td><td class="memItemRight" valign="bottom"><b>__init__</b> (self, message, errors)</td></tr>
-<tr class="separator:a843bdbfe3b6d66d7b84b86bc1990c691"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a843bdbfe3b6d66d7b84b86bc1990c691 inherit pub_methods_class_f_c_m_1_1_f_c_m_construction_error"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><pre class="fragment">This Exception class is the base class of all the FCM Exceptions.<br>All the other exceptions such as the  <a href="./class_f_c_m_1_1_concept_exist_error.html">ConceptExistError</a>,<a href="./class_f_c_m_1_1_edge_exist_error.html">EdgeExistError,<a href="./class_f_c_m_1_1_invalid_concept_value_error.html">InvalidConceptValueError</a>,<a href="./class_f_c_m_1_1_invalid_weight_error.html">InvalidWeightError</a> inherit from this class.
-</pre> </div>
+<div class="textblock"><pre class="fragment">This class is an Exception class which will be raised whenever an invalid value is assigned in the Simulation class.
+</pre> 
+</div>
 </body>
 </html>

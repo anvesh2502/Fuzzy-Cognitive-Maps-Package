@@ -85,31 +85,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2f32f5da01e7f1485510f5982be2860c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a671846c113f0a9dc83286c5ad9512285"><td class="memItemLeft" align="right" valign="top"><a id="a671846c113f0a9dc83286c5ad9512285"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>fcm</b></td></tr>
-<tr class="separator:a671846c113f0a9dc83286c5ad9512285"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a868424f7c18c88721f794fa099eadec7"><td class="memItemLeft" align="right" valign="top"><a id="a868424f7c18c88721f794fa099eadec7"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>numSteps</b></td></tr>
-<tr class="separator:a868424f7c18c88721f794fa099eadec7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec4266415db730e604fd19efd35bef84"><td class="memItemLeft" align="right" valign="top"><a id="aec4266415db730e604fd19efd35bef84"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>stabilizers</b></td></tr>
-<tr class="separator:aec4266415db730e604fd19efd35bef84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0a20076b369e7b1917db3dcd5b77f60"><td class="memItemLeft" align="right" valign="top"><a id="af0a20076b369e7b1917db3dcd5b77f60"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>stableDict</b></td></tr>
-<tr class="separator:af0a20076b369e7b1917db3dcd5b77f60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4feb4ed88fc1964a6174ae1b4e2cd51d"><td class="memItemLeft" align="right" valign="top"><a id="a4feb4ed88fc1964a6174ae1b4e2cd51d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>particle_swarm</b></td></tr>
-<tr class="separator:a4feb4ed88fc1964a6174ae1b4e2cd51d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bf335dc7d60b29f151285ebfca3e665"><td class="memItemLeft" align="right" valign="top"><a id="a0bf335dc7d60b29f151285ebfca3e665"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>transferFunction</b></td></tr>
-<tr class="separator:a0bf335dc7d60b29f151285ebfca3e665"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90288804c2a984095032eac0218bf92b"><td class="memItemLeft" align="right" valign="top"><a id="a90288804c2a984095032eac0218bf92b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>edgeMatrix</b></td></tr>
-<tr class="separator:a90288804c2a984095032eac0218bf92b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c3e4f6c4750204ae65db87b36bd3533"><td class="memItemLeft" align="right" valign="top"><a id="a3c3e4f6c4750204ae65db87b36bd3533"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>stable_concepts</b></td></tr>
-<tr class="separator:a3c3e4f6c4750204ae65db87b36bd3533"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><pre class="fragment">This class is responsible for the simulation of the Fuzzy Cognitive Maps.
@@ -122,29 +97,21 @@ well as the Particle Swarm Optimization with the help of an optional parameter</
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def Simulation.simulation.__init__ </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>FCM</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>converge_concepts_dict</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">def Simulation.simulation.__init__ (fcm,
+  converge_concepts_dict)</td>
         </tr>
       </table>
+      <b>Parameters </b> : 
+      <ul>
+      <li>fcm(<a href="./class_f_c_m_1_1_f_c_m.html">FCM</a>) - an FCM object</li>
+      <li>converge_concepts_dict(<a href="https://docs.python.org/2/tutorial/datastructures.html"></a>) - a dictionary with key as concepts and tuple as values</li>
+      </ul>
+       <br>
+ <b>Returns </b> : a Simulation object <br>
+ <b> Return Type </b> : Simulation <br>
+ <b> Exceptions which can be raised by this method </b> : None <br>
+
+
 </div><div class="memdoc">
 <pre class="fragment">Constructor
 The constructor takes the following parameters
@@ -161,21 +128,7 @@ The constructor takes the following parameters
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def Simulation.simulation.changeTransferFunction </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>function</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">def Simulation.simulation.changeTransferFunction(function)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -193,27 +146,7 @@ Description: Changes the transfer function. error check will pass 100 and -100  
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def Simulation.simulation.run </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>run_particle_swarm</em> = <code>False</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>c</em> = <code>None</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">def Simulation.simulation.run(run_particle_swarm=False,c=None)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -232,27 +165,7 @@ Will print out the number of steps and the nodes with their correlated values
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def Simulation.simulation.stabilize </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>concept</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>threshold</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">def Simulation.simulation.stabilize(concept,threshold)
         </tr>
       </table>
 </div><div class="memdoc">
@@ -272,21 +185,7 @@ if the stabilizer is already in the list of stabilizers we just set the new thre
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def Simulation.simulation.steps </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>numsteps</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">def Simulation.simulation.steps(numsteps)
         </tr>
       </table>
 </div><div class="memdoc">
@@ -294,15 +193,6 @@ if the stabilizer is already in the list of stabilizers we just set the new thre
 </pre> 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>Simulation.py</li>
-</ul>
-</div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.12
-</small></address>
+</div>
 </body>
 </html>

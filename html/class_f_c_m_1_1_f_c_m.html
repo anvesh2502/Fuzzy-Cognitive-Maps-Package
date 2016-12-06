@@ -103,16 +103,21 @@ This is a Python class  for Fuzzy Cognitive Maps</pre> </div><h2 class="grouphea
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def FCM.FCM.__init__ </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em></td><td>)</td>
-          <td></td>
-        </tr>
+          <td class="memname">def FCM.FCM.__init__() - Creates an object of FCM (Constructor) </td>
+          
       </table>
 </div><div class="memdoc">
-<pre class="fragment">@brief  This is the constructor for the Fuzzy graph.It initializes the networkx Digraph
-@params none
+ <b>Parameters </b> : None<br>
+ <b>Returns </b> : a Fuzzy Cognitive Map object<br>
+ <b> Return Type </b> : FCM
+ <b> Exceptions which can be raised by this method </b> : None
+
+
+<pre class="fragment" title="Notes">
+This method is the constructor for the fcm .The code snippet below shows its usage.<br>
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">fcm<span style="color: #333333">=</span>FCM()
+</pre></div>
+
 </pre> 
 </div>
 </div>
@@ -124,26 +129,23 @@ This is a Python class  for Fuzzy Cognitive Maps</pre> </div><h2 class="grouphea
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def FCM.FCM.add_concept </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>concept</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">def FCM.FCM.add_concept(concept) - Adds a concept to the fcm</td>
         </tr>
       </table>
-</div><div class="memdoc">
-<pre class="fragment">@brief This method is an interface for the add_node method of DiGraph
-@param concept A valid concept</pre> 
+</div>
+<br>
+<b>Parameters </b> : concept(<a href="https://docs.python.org/2/library/string.html">string</a>) - Name of the concept <br>
+ <b>Returns </b> : None <br>
+ <b> Return Type </b> : None <br>
+ <b> Exceptions which can be raised by this method </b> : None <br>
+<div class="memdoc">
+<pre class="fragment">
+  After creating a FCM object,we should add concepts to it.This method helps us add concepts to an existing fcm object.The usage of the method is shown in the code snippet<br>
+  <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">fcm<span style="color: #333333">.</span>add_concept(<span style="background-color: #fff0f0">&quot;concept1&quot;</span>) <span style="color: #888888"># After this call,there will be a concept called concept1 in the fcm object</span>
+</pre></div>
+
+
+</pre> 
 </div>
 </div>
 <a id="a4e32ab9228e8f678e6892092d643062d"></a>
@@ -153,40 +155,33 @@ This is a Python class  for Fuzzy Cognitive Maps</pre> </div><h2 class="grouphea
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def FCM.FCM.add_edge </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>concept1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>concept2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>weight</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">def FCM.FCM.add_edge(concept1,concept2,weight) - Adds an edge between two concepts</td>
         </tr>
       </table>
-</div><div class="memdoc">
-<pre class="fragment">@brief This method is an interface for the add_edge method of Digraph.It checks whether the weight provided is the range of [-1,1].If the node does not exist,we create them before creating the edge.
-@param concept1 a valid concept
-@param concept2 a valid concept
-@param weight a desired weight for the edge
+
+</div>
+<b>Parameters </b> :<ul><li> concept1(<a href="https://docs.python.org/2/library/string.html">string</a>) - Name of the first concept <br></li>
+<li>concept1(<a href="https://docs.python.org/2/library/string.html">string</a>) - Name of the second concept <br> </li>
+<li>weight (<a href="http://docs.python.org/library/functions.html#int">int</a>)- An integer in the bounds [-1,1]
+</ul>
+ <b>Returns </b> : None <br>
+ <b> Return Type </b> : None <br>
+ <b> Exceptions which can be raised by this method </b> : <a href="./class_f_c_m_1_1_invalid_weight_error.html">InvalidWeightError</a> <br>
+<div class="memdoc">
+<pre class="fragment">
+This method will add an edge between two concepts and will also accept a weight of the edge.The
+important notable points while using this function are :
+-- If any of the two concepts do not exist,this method will create them before adding an edge
+-- If the weight parameter is out of bounds,<a href="./class_f_c_m_1_1_invalid_weight_error.html">InvalidWeightError</a> will be raised.
+The proper usage of this function is given in the code snippet below<br>
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">try</span> :
+  fcm<span style="color: #333333">.</span>add_edge(<span style="background-color: #fff0f0">&quot;concept1&quot;</span>,<span style="background-color: #fff0f0">&quot;concept2&quot;</span>,<span style="color: #6600EE; font-weight: bold">0.8</span>)
+<span style="color: #008800; font-weight: bold">except</span> InvalidWeightError :
+  <span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&#39;You are seeing me because of the invalid weight value&#39;</span>) <span style="color: #888888"># Here is where you reach when the weight value is out of bounds</span>
+  
+</pre></div>
+
+
 </pre> 
 </div>
 </div>
@@ -197,16 +192,23 @@ This is a Python class  for Fuzzy Cognitive Maps</pre> </div><h2 class="grouphea
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def FCM.FCM.concepts </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em></td><td>)</td>
-          <td></td>
+          <td class="memname">def FCM.FCM.concepts() - Returns a dictionary of all the concepts in the fcm object</td>
         </tr>
       </table>
-</div><div class="memdoc">
-<pre class="fragment">@brief This method is an interface for nodes().It returns the dictionary of concepts in the graph having the node of the value as value and the concept as the key.
-@param none
+
+</div>
+<b>Parameters </b> : None
+ <b>Returns </b> : A dictionary with each concept as key and its respective value as value <br>
+ <b> Return Type </b> : a <a href="">dict</a> object <br>
+ <b> Exceptions which can be raised by this method </b> : None <br>
+
+<div class="memdoc">
+<pre class="fragment">
+This method returns a dictionary of concepts instead of a list so that the values of the concepts can also be obtained in a go.The usage of this method is shown below in the code snippet below<br>
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">concept_dict<span style="color: #333333">=</span>fcm<span style="color: #333333">.</span>concepts()
+<span style="color: #008800; font-weight: bold">print</span> concept_dict <span style="color: #888888"># prints {&#39;concept1&#39; : 0.4,&#39;concept2&#39; : 0.5}</span>
+</pre></div>
+
 </pre> 
 </div>
 </div>
@@ -217,16 +219,22 @@ This is a Python class  for Fuzzy Cognitive Maps</pre> </div><h2 class="grouphea
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def FCM.FCM.draw </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em></td><td>)</td>
-          <td></td>
+          <td class="memname">def FCM.FCM.draw() - Opens an image of the fcm in a new window</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment"> @brief    This method is an interface for the draw() in the networkx package.We draw the DiGraph using spring layout and labels with the help of matplotlib
- @param none
+ <b>Parameters </b> :None <br>
+ <b>Returns </b> : None <br>
+ <b> Return Type </b> : None <br>
+ <b> Exceptions which can be raised by this method </b> : None <br>
+
+<pre class="fragment">
+This method opens the image of the fcm graph in a new window using matplotlib.
+The usage of this method is shown in the code snippet below.<br>
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">fcm<span style="color: #333333">.</span>draw()
+</pre></div>
+
+
 </pre> 
 </div>
 </div>
@@ -237,27 +245,29 @@ This is a Python class  for Fuzzy Cognitive Maps</pre> </div><h2 class="grouphea
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def FCM.FCM.get_concept_value </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>concept</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
+          <td class="memname">def get_concept_value(concept) - Returns the value of the concept in the fcm </td>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">@brief returns the value of the concept
-@param concept a valid concept
+ <b>Parameters </b> :concept(<a href="https://docs.python.org/2/library/string.html">string</a>) <br>
+ <b>Returns </b> : None <br>
+ <b> Return Type </b> : None <br>
+ <b> Exceptions which can be raised by this method </b> : <a href="./class_f_c_m_1_1_concept_exist_error.html">ConceptExistError</a> <br>
+
+<pre class="fragment">
+Using this method,we can fetch the value of the concept which exists in the fcm.
+If the concept does not exist,this method will raise a ConceptExistError Exception.
+The proper usage of this method is given below.<br>
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">try</span> :
+ value<span style="color: #333333">=</span>fcm<span style="color: #333333">.</span>get_concept_value(<span style="background-color: #fff0f0">&#39;concept33&#39;</span>)
+<span style="color: #008800; font-weight: bold">except</span> ConceptExistError :
+ <span style="color: #008800; font-weight: bold">print</span> <span style="background-color: #fff0f0">&#39;You will see this code if the concept does not exist&#39;</span>
+</pre></div>
+
+
+
 </pre> 
+
 </div>
 </div>
 <a id="a619a5925ca824a4e633378e2ceeca1fd"></a>
@@ -267,33 +277,28 @@ This is a Python class  for Fuzzy Cognitive Maps</pre> </div><h2 class="grouphea
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def FCM.FCM.get_weight </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>concept1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>concept2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">def FCM.FCM.get_weight(concept1,concept2) </td>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">@brief returns the weight of the edge,if the edge exists
-@param concept1 a valid concept
-@param concept2 a valid concept
+<b>Parameters </b> :<ul><li> concept1(<a href="https://docs.python.org/2/library/string.html">string</a>) - Name of the first concept <br></li>
+<li>concept1(<a href="https://docs.python.org/2/library/string.html">string</a>) - Name of the second concept <br> </li>
+</ul>
+ <b>Returns </b> : weight - an integer in the bounds [-1,1] <br>
+ <b> Return Type </b> : <a href="https://docs.python.org/3/library/functions.html#int">int</a> <br>
+ <b> Exceptions which can be raised by this method </b> : <a href="./class_f_c_m_1_1_concept_exist_error.html">ConceptExistError</a> <br>
+
+<pre class="fragment">
+This method returns the weight of the edge comprising the concepts.If any of the concepts do not exist,ConceptExistError exception will be raised.If there is no edge between the concepts,None will be returned.
+The proper usage of this method is given below.<br>
+
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">try</span> :
+  weight<span style="color: #333333">=</span>fcm<span style="color: #333333">.</span>get_weight(<span style="background-color: #fff0f0">&#39;concept1&#39;</span>,<span style="background-color: #fff0f0">&#39;concept2&#39;</span>)
+<span style="color: #008800; font-weight: bold">except</span> ConceptExistError :
+ <span style="color: #008800; font-weight: bold">print</span> <span style="background-color: #fff0f0">&#39;You will see this code if any of the concepts do not exist&#39;</span>
+</pre></div>
+
+
 </pre> 
 </div>
 </div>
@@ -304,26 +309,24 @@ This is a Python class  for Fuzzy Cognitive Maps</pre> </div><h2 class="grouphea
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def FCM.FCM.remove_concept </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>concept</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">def FCM.FCM.remove_concept(concept) - Removes the concepts from the fcm.  </td>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">@brief This method is an interface for the remove_node() .If the node does exist,it prints an error message and returns.
-@param concept A valid concept
+<b>Parameters </b> :concept(<a href="https://docs.python.org/2/library/string.html">string</a>) <br>
+ <b>Returns </b> : None <br>
+ <b> Return Type </b> : None <br>
+ <b> Exceptions which can be raised by this method </b> : <a href="./class_f_c_m_1_1_concept_exist_error.html">ConceptExistError</a> <br>
+
+<pre class="fragment">
+This method removes the concept from the FCM.If the concept does not exist,it will raise 
+ConceptExistError Exception.The proper usage of the code is shown in the code snippet below.<br>
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">try</span> :
+  fcm<span style="color: #333333">.</span>remove_concept(<span style="background-color: #fff0f0">&#39;concept1&#39;</span>)
+<span style="color: #008800; font-weight: bold">except</span> ConceptExistError :
+ <span style="color: #008800; font-weight: bold">print</span> <span style="background-color: #fff0f0">&#39;You will see this code if the concept does not exist&#39;</span>
+</pre></div>
+
 </pre> 
 </div>
 </div>
@@ -334,33 +337,30 @@ This is a Python class  for Fuzzy Cognitive Maps</pre> </div><h2 class="grouphea
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def FCM.FCM.remove_edge </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>node1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>node2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">def FCM.FCM.remove_edge(concept1,concept2) - Removes the edge between the concepts</td>
         </tr>
       </table>
-</div><div class="memdoc">
-<pre class="fragment">@brief This method removes edges from the fcm graph.It also checks if the nodes exist and if the edge exists.
-@param node1 a valid concept
-@param node2 a valid concept
+
+</div>
+<b>Parameters </b> :<ul><li> concept1(<a href="https://docs.python.org/2/library/string.html">string</a>) - Name of the first concept <br></li>
+<li>concept1(<a href="https://docs.python.org/2/library/string.html">string</a>) - Name of the second concept <br> </li>
+<li>weight (<a href="http://docs.python.org/library/functions.html#int">int</a>)- An integer in the bounds [-1,1]
+</ul>
+ <b>Returns </b> : None <br>
+ <b> Return Type </b> : None <br>
+<b> Exceptions which can be raised by this method </b> : <a href="./class_f_c_m_1_1_concept_exist_error.html">ConceptExistError</a> <br>
+
+<div class="memdoc">
+<pre class="fragment">
+This method removes the edge between the concepts in an fcm.
+If any of the edges do not exist,it will raise a ConceptExistError Exception.The proper usage of this method is given below in the code snippet<br>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">try</span> :
+  fcm<span style="color: #333333">.</span>remove_edge(<span style="background-color: #fff0f0">&#39;concept1&#39;</span>,<span style="background-color: #fff0f0">&#39;concept2&#39;</span>)
+<span style="color: #008800; font-weight: bold">except</span> ConceptExistError :
+ <span style="color: #008800; font-weight: bold">print</span> <span style="background-color: #fff0f0">&#39;You will see this code if any of the concepts do not exist&#39;</span>
+</pre></div>
+
+
 </pre> 
 </div>
 </div>
@@ -371,45 +371,48 @@ This is a Python class  for Fuzzy Cognitive Maps</pre> </div><h2 class="grouphea
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">def FCM.FCM.set_value </td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>self</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>concept</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>num</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">def set_value(concept,value) - sets a value to a concept in the fcm </td>
         </tr>
       </table>
-</div><div class="memdoc">
-<pre class="fragment">@brief This method adds an attribute to a node and accepts either an integer of a function which returns an integer
-@param concept A valid concept
-@param num a valid integer between [-1,1 ]
+
+</div>
+<b>Parameters </b> :<ul><li> concept(<a href="https://docs.python.org/2/library/string.html">string</a>) - Name of the concept <br></li>
+<li>concept(<a href="https://docs.python.org/2/library/string.html">string</a>) - Name of the second concept <br> </li>
+<li>value (<a href="http://docs.python.org/library/functions.html#int">int</a>)- An integer in the bounds [-1,1] or a function with no parameters and returns a value between [-1,1]
+</ul>
+ <b>Returns </b> : The value of the concept <br>
+ <b> Return Type </b> : <a href="http://docs.python.org/library/functions.html#int">int</a> <br>
+<b> Exceptions which can be raised by this method </b> : <a href="./class_f_c_m_1_1_concept_exist_error.html">ConceptExistError</a>&nbsp&nbsp<a href="./class_f_c_m_1_1_invalid_concept_value_error.html">InvalidConceptValueError</a><br>
+
+<div class="memdoc">
+<pre class="fragment">
+This method is used to set the value of a concept .The value can be set in two ways.
+-- Using a variable
+-- Using a function 
+This method will raise a ConceptExistError Exception if the concept does not exist.
+It will raise the InvalidConceptValueError Exception if the value is out of bounds.
+
+The proper usage of this method will be shown in the code snippet below.<br>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888"># Setting value with a variable</span>
+val<span style="color: #333333">=</span><span style="color: #6600EE; font-weight: bold">0.9</span>
+<span style="color: #008800; font-weight: bold">try</span> :
+   fcm<span style="color: #333333">.</span>set_value(<span style="background-color: #fff0f0">&#39;concept1&#39;</span>,val)
+<span style="color: #008800; font-weight: bold">except</span> ConceptExistError :
+   <span style="color: #008800; font-weight: bold">print</span> <span style="background-color: #fff0f0">&#39;You will see this code if the concept does not exist&#39;</span>
+
+<span style="color: #888888"># Setting value with a function</span>
+
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">f</span>() : <span style="color: #008800; font-weight: bold">return</span> <span style="color: #6600EE; font-weight: bold">0.5</span>
+<span style="color: #008800; font-weight: bold">try</span> :
+   fcm<span style="color: #333333">.</span>set_value(<span style="background-color: #fff0f0">&#39;concept1&#39;</span>,f)
+<span style="color: #008800; font-weight: bold">except</span> ConceptExistError :
+   <span style="color: #008800; font-weight: bold">print</span> <span style="background-color: #fff0f0">&#39;You will see this code if the concept does not exist&#39;</span>
+</pre></div>
+
+
+
 </pre> 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>FCM.py</li>
-</ul>
-</div><!-- contents -->
-<!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.12
-</small></address>
 </body>
 </html>

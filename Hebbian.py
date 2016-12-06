@@ -27,7 +27,6 @@ def hebbian_learning(fcm, restraints, stabilizers, transferFunct, neu, k = maxsi
     to get optimal edge values for an FCM starting from an initial state.
     '''
 
-    #get error checking on all parameters...
     limit = k
     count = 0
     oldValues = [] #list for values of concepts

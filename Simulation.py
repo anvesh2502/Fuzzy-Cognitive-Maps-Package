@@ -8,9 +8,26 @@ from copy import deepcopy
 import numpy as np
 from sys import maxsize
 from networkx import to_numpy_matrix
-from FCM import FCM
+from FCM import *
 from Particle_Swarm_Optimization import PSO
 import time
+
+
+class InputTypeError(Exception) :
+
+    def __init__(self,message,errors) :
+        message=message+" : "+str(errors)
+        super(Exception, self).__init__(message)
+
+class InvalidValueError(Exception) :
+
+    def __init__(self,message,errors) :
+        message=message+" : "+str(errors)
+        super(Exception, self).__init__(message)
+
+
+
+
 
 class simulation:
 
@@ -76,8 +93,7 @@ class simulation:
 
 
         if type(numsteps) is not int:
-            print "Please input an integer"
-            return
+            raise InputTypeError("Invalid steps value type")
         if numsteps > 0 and numsteps < maxsize:
             self.numSteps = numsteps
 
@@ -95,11 +111,11 @@ class simulation:
 
         if callable(function):
             if function(100) > 1 or function(-100) < -1:
-                print "Error Transfer function must keep values in range [-1,1]"
+                raise InvalidValueError("Error Transfer function must keep values in range [-1,1]")
             else:
                 self.transferFunction = function
         else:
-            print "Must pass a function"
+            raise InputTypeError("Must pass a function")
 
     def _updateNodes(self, nodeValues,c = None): #nodevalues is a list of the node values
         '''
@@ -116,8 +132,7 @@ class simulation:
         update = np.dot(self.edgeMatrix,values_vector)# get new vector of values to be added
         if c is not None:
             if type(c) is not float:
-                print "Weight c needs to be a decimal value"
-                return
+                raise InvalidValueError("Weight c needs to be a decimal value")
             values_vector = values_vector*c
         newValues = np.add(values_vector, update) #values after addition
         newValList = newValues.tolist()[0] #convert to list
