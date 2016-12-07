@@ -9,7 +9,7 @@ import numpy as np
 from sys import maxsize
 from networkx import to_numpy_matrix
 from FCM import *
-from Particle_Swarm_Optimization import PSO
+from Particle_Swarm_Optimization import *
 import time
 
 
@@ -76,7 +76,7 @@ class simulation:
 
 
         if concept not in self.fcm.concepts():
-            print "Please input a valid concept"
+            raise ConceptExistError("Please input a valid concept")
             return
         else:
             if concept not in self.stabilizers:
@@ -98,7 +98,7 @@ class simulation:
             self.numSteps = numsteps
 
         else:
-            print "Please input a positive number of steps that is less than ", sys.maxsize
+            raise InputTypeError("invalid number")
             return
     def changeTransferFunction(self,function):
 

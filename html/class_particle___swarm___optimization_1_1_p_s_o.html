@@ -81,7 +81,7 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><pre class="fragment">This class is a class which runs the Particle Swarm Optimization for FCMs to make
 sure that the concepts converge to the bounds given by the experts and the weights
-are globally minimized.</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+are globally minimized according to an objective function.To normalize the values,<br>the sigmoid function is used.</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="add702c734a63162dbe1cbfd6f94f26f7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#add702c734a63162dbe1cbfd6f94f26f7">&sect;&nbsp;</a></span>__init__()</h2>
 
@@ -93,7 +93,8 @@ are globally minimized.</pre> </div><h2 class="groupheader">Constructor &amp; De
 
         </tr>
       </table>
-  <b>Parameters </b> : <ul>
+</div><div class="memdoc">
+ <b>Parameters </b> : <ul>
   <li>fcm(<a href="">FCM</a>) - An FCM object </li>
   <li>converge_concepts_dict(<a href=""></a>) - A dictionary with concepts as key and bounds as values</li>
   <li>steepness_parameter(<a href="https://docs.python.org/3/library/functions.html#float">float</a>) - A default parameter for the steepness parameter for convergence .Default value is 1</li>
@@ -106,7 +107,7 @@ are globally minimized.</pre> </div><h2 class="groupheader">Constructor &amp; De
  <b>Returns </b> : a PSO Object <br>
  <b> Return Type </b> : PSO <br>
  <b> Exceptions which can be raised by this method </b> : None <br>    
-</div><div class="memdoc">
+<
 <pre class="fragment">
 This is the constructor for the Particle Swarm Optimization class.I needs atleast an fcm object
 for running the convergence algorithm.

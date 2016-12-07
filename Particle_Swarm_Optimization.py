@@ -205,6 +205,7 @@ class PSO :
                         current[k]/=div
 
 
+
                     self.weight_matrix[self.converge_concepts[i]][key]=current[k]
                     k+=1
 
@@ -275,7 +276,7 @@ class PSO :
 
          for concept in self.converge_concepts :
             bounds=self.converge_concepts_dict[concept]
-            concept_value=self.fcm._get_concept_value(concept)
+            concept_value=self.fcm.get_concept_value(concept)
             if self._in_bounds(concept_value,bounds) :
                 continue
 
@@ -301,4 +302,4 @@ class PSO :
         print self.weight_matrix
         print 'concept values '
         for c in self.converge_concepts :
-          print self.fcm.get_concept_value(c)
+          print c,self.fcm.get_concept_value(c),'bounds='+str(self.converge_concepts_dict[c])

@@ -39,5 +39,5 @@ test_fcm.add_edge("Therm_tank1","Heat element",.53)
 test_fcm.add_edge("Therm_tank1","Valve1",.4)
 test_fcm.add_edge("Therm_tank2","Valve2",.3)
 
-sim=simulation(test_fcm,{'Tank1':(0.6,0.9),'Tank2': (0.3,0.9)})
-sim.run()
+pso=PSO(test_fcm,{'Tank1':(0.6,0.9),'Tank2': (0.3,0.9)})
+pso.run_convergence()
