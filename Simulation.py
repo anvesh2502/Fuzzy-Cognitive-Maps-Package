@@ -202,6 +202,9 @@ class simulation:
 
             count += 1
 #        newValues =
+        if count == self.numSteps:
+            print "Used max number of steps"
+            
         self._output_results(newValues,count)
 
         end_time=time.time()
